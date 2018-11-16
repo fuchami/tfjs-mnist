@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initia-scale=1">
+  <title>MNIST with TensorFlow.js Sample</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+</head>
+<body>
+  <h1 class="title">MNIST recognition with Tensorflow.js</h1>
+  <h2 class="subtitle">Using Keras pre-trained model (CNN)</h2>
+  <div class="column is-centered">
+    <div class="column in-narrow">
+      <canvas id="draw-area" width="280" height="280" style="border: 2px solid;"></canvas>
+      <div class="field is-grouped">
+        <p class="control">
+          <a id="predict-button" class="button is-link is-loading" onclick="prediction()">
+            prediction
+          </a>
+        </p>
+        <p class="control">
+          <a class="button" onclick="reset()">
+            Reset
+          </a>
+        </p>
+      </div>
+    </div>
+    <div class="column is-3">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Accuracy</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.0"></script>
+<script>
+
+  // load pre-trained model
+  let model;
+  tf.loadModel('/model/model.json')
+    .then(pretrainedModel => {
+      document.getElementById('predict-button').classList.remove('is-loading');
+      model = pretrainedModel;
+    })
+</script>
+
+</body>
+</html>
