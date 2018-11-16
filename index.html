@@ -94,7 +94,7 @@
 
     // load pre-trained model
     let model;
-    tf.loadModel('./model/model.json')
+    tf.loadModel('https://raw.githubusercontent.com/fuchami/tfjs-mnist/master/model/model.json')
       .then(pretrainedModel => {
         document.getElementById('predict-button').classList.remove('is-loading');
         model = pretrainedModel;
